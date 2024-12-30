@@ -1,3 +1,26 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+@keyframes borderChange {
+  0% {
+    border-color: red;
+  }
+  25% {
+    border-color: orange;
+  }
+  50% {
+    border-color: yellow;
+  }
+  75% {
+    border-color: green;
+  }
+  100% {
+    border-color: blue;
+  }
+}
+
+.border-gradient {
+  animation: borderChange 4s infinite;
+}

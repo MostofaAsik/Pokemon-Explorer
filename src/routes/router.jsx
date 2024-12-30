@@ -2,6 +2,8 @@ import { createBrowserRouter } from "react-router";
 import MainLayout from "../layout/MainLayout";
 import Home from "../pages/Home";
 import ViewDetails from "../components/ViewDetails";
+import Favourites from "../pages/Favourites";
+
 
 const router = createBrowserRouter([
     {
@@ -15,6 +17,10 @@ const router = createBrowserRouter([
             {
                 path: "/pokemon/:name",
                 element: <ViewDetails />,
+            },
+            {
+                path: "/favorites",
+                element: <Favourites />,
             }
         ],
     },

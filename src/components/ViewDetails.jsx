@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router';
 import { FaStar } from 'react-icons/fa';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const ViewDetails = () => {
     const { name } = useParams();
@@ -27,27 +29,29 @@ const ViewDetails = () => {
         fetchPokemonData();
     }, [name]);
 
-
     useEffect(() => {
         const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
-        if (favorites.includes(name)) {
+        if (favorites.some(fav => fav.name === name)) {
             setIsFavorite(true);
         }
     }, [name]);
 
-
     const handleFavorite = () => {
         const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
 
-        if (favorites.includes(name)) {
-            const updatedFavorites = favorites.filter(fav => fav !== name);
+        if (favorites.some(fav => fav.name === name)) {
+            const updatedFavorites = favorites.filter(fav => fav.name !== name);
             localStorage.setItem('favorites', JSON.stringify(updatedFavorites));
             setIsFavorite(false);
         } else {
-
-            favorites.push(name);
+            const newFavorite = {
+                name: name,
+                image: pokemon.image
+            };
+            favorites.push(newFavorite);
             localStorage.setItem('favorites', JSON.stringify(favorites));
             setIsFavorite(true);
+            toast.success(`${name} has been added to favorites!`);
         }
     };
 
@@ -117,6 +121,7 @@ const ViewDetails = () => {
                         Favourite
                     </button>
                 </div>
+                <ToastContainer />
             </div>
         </div>
     );

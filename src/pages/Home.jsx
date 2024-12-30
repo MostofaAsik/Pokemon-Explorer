@@ -77,7 +77,6 @@ const Home = () => {
         <div className="container mx-auto px-4 py-6">
             {/* Search and Filters */}
             <div className="flex flex-col md:flex-row gap-4 mb-6">
-                {/* Search Bar */}
                 <input
                     type="text"
                     placeholder="Search Pokémon..."
@@ -113,7 +112,7 @@ const Home = () => {
             </div>
 
             {/* Pokémon List */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
                 {paginatedPokemon.map((pokemon) => (
                     <PokemanCard key={pokemon.name} pokemon={pokemon} />
                 ))}
