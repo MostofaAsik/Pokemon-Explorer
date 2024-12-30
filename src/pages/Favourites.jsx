@@ -19,7 +19,7 @@ const Favourites = () => {
     };
 
     if (favorites.length === 0) {
-        return <p>No favorites yet.</p>;
+        return <p className='text-center text-red-500 mt-6'>No favorites yet.</p>;
     }
 
     return (

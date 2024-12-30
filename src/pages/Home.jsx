@@ -9,6 +9,7 @@ const Home = () => {
     const [sortOption, setSortOption] = useState("");
     const [selectedType, setSelectedType] = useState("");
     const [types, setTypes] = useState([]);
+    const [loading, setLoading] = useState(false);
 
     // Pagination State
     const [currentPage, setCurrentPage] = useState(1);
@@ -75,7 +76,9 @@ const Home = () => {
 
     return (
         <div className="container mx-auto px-4 py-6">
+            {loading && <p className="text-center text-red-500 text-2xl">Loading...</p>}
             {/* Search and Filters */}
+            <h2 className="text-3xl font-semibold mb-6">Pokémon Explorer</h2>
             <div className="flex flex-col md:flex-row gap-4 mb-6">
                 <input
                     type="text"
